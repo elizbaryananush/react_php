@@ -7,13 +7,12 @@ header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Max-Age: 86400'); // 24 hours
 
 $hostname = "localhost";
-$username = *write your myphpadmin username*;
-$password = *write your password*;
-$database = *write your database name*;
-$port = 9306
+$username = "root";
+$password = "";
+$database = "testing_phpmyadmin";
 
 try {
-    $connection = mysqli_connect($hostname, $username, $password, $database, $port);
+    $connection = mysqli_connect("localhost", "root", "", "testing_phpmyadmin", 9306);
 
     $sql = "SELECT * 
             FROM users
