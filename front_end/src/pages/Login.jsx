@@ -33,6 +33,7 @@ function Login() {
                 setError("")
                 setMsg("You're in ! Redirecting...")
                 localStorage.setItem('login', true)
+                localStorage.setItem('loginUsername' , username)
                 setTimeout(() => {
                     window.location.href = '/main';
                 }, 1000)
