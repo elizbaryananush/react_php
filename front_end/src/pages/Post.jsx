@@ -6,9 +6,10 @@ function Post(props) {
     const { username } = props;
     const [imageURL, setImageURL] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [hashtags, setHashtags] = useState()
-    const [tags, setTags] = useState()
-    const [location, setLocation] = useState()
+    const [context, setContext] = useState('')
+    const [hashtags, setHashtags] = useState('')
+    const [tags, setTags] = useState('')
+    const [location, setLocation] = useState('')
     const [showPage, setShowPage] = useState(1)
 
     useEffect(() => {
@@ -17,21 +18,46 @@ function Post(props) {
 
     function handleFileUpload(event) {
         setShowPage(2)
-
+        
         const file = event.target.files[0];
         setSelectedFile(file);
-
+        
         const url = URL.createObjectURL(file);
         setImageURL(url);
     }
 
     const post = async () => {
+        const response = await fetch('http://localhost/mywebsite/api/users/addNewPost.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                hashtags,
+                tags,
+                location,
+                context,
+                url: imageURL,
+            })
+        })
 
+        const data = await response.json()
+
+        alert(data)
+
+        window.location.href = '/main'
+
+    }
+
+    const discard = () => {
+        window.location.href = '/main'
     }
 
 
     return (
         <div className='Post' style={{ display: display }}>
+            <svg onClick={discard} className='cross' xmlns="http://www.w3.org/2000/svg" id="Bold" viewBox="0 0 24 24" width="512" height="512"><path d="M14.121,12,18,8.117A1.5,1.5,0,0,0,15.883,6L12,9.879,8.11,5.988A1.5,1.5,0,1,0,5.988,8.11L9.879,12,6,15.882A1.5,1.5,0,1,0,8.118,18L12,14.121,15.878,18A1.5,1.5,0,0,0,18,15.878Z"/></svg>
             <input type="file" accept="image/*" onChange={handleFileUpload} style={{ display: 'none' }} id="fileInput" />
             <div className="Post__box">
                 <div className="page1 page" style={showPage === 1 ? { display: 'flex' } : { display: 'none' }}>
@@ -45,27 +71,44 @@ function Post(props) {
                         </div>
                     </div>
                 </div>
-                <div className="page2 page" style={showPage === 2 || showPage === 3 ? { display: 'flex' } : { display: 'none' }}>
+
+                <div className="page2 page" style={showPage === 2 ? { display: 'flex' } : { display: 'none' }}>
                     <div className="top">
                         <p onClick={() => setShowPage(showPage - 1)}>back</p>
+                        <p>create new post</p>
                         <p onClick={() => setShowPage(showPage + 1)}>next</p>
+                    </div>
+                    <div className='bottom'>
+                        <img src={imageURL} alt="Selected" />
+                    </div>
+                </div>
+                <div className="page3 page" style={showPage === 3 ? { display: 'flex' } : { display: 'none' }}>
+                    <div className="top">
+                        <p onClick={() => setShowPage(showPage - 1)}>back</p>
+                        <p>create new post</p>
+                        <p onClick={post}>share</p>
                     </div>
                     <div className='bottom'>
                         <img src={imageURL} alt="Selected" />
 
                         <div
-                            style={showPage === 3 ? { display: 'block' } : { display: 'none' }}
                             className="edit">
                             <div className="profil">
                                 <img src={img} />
                                 <p>{username}</p>
                             </div>
 
-                            <textarea placeholder='Write a caption...' cols="30" rows="10"></textarea>
+                            <textarea
+                                placeholder='Write a caption...'
+                                cols="30"
+                                rows="10"
+                                value={context}
+                                onChange={e => setContext(e.target.value)}
+                            ></textarea>
 
                             <div className="other">
 
-                                <form action="">
+                                <form>
                                     <label>
                                         <input type="text" placeholder={'Add Tags'}
                                             value={tags}

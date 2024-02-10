@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Post from './Post';
+import SideBar from '../Components/SideBar';
 
 function Home() {
     const navigate = useNavigate();
@@ -24,21 +24,21 @@ function Home() {
 
     return (
         <div className='Home'>
-            <Post username={loginUsername} display={postStyle}/>
-            Home
-            {
+            {/* <Post username={loginUsername} display={postStyle}/> */}
+            <SideBar />
+            {/* {
                 login ? <>
                     <form onSubmit={logout}>
                         <input type="submit" value={'logout'} />
                     </form><br />
-                    <button onClick={togglePostDisplay} className="post">Toggle Post</button>
+                    <button onClick={togglePostDisplay} className="post">Togleg Post</button>
                 </> : <>
                     <div className="">
                         <a href="/">Sign in</a>
                         <a href="/login/registration">Sign Up</a>
                     </div>
                 </>
-            }
+            } */}
         </div>
     );
 }
