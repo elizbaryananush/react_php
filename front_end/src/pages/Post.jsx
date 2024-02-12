@@ -44,8 +44,6 @@ function Post(props) {
 
         const data = await response.json()
 
-        alert(data)
-
         window.location.href = '/main'
 
     }

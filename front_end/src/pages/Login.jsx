@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import svg1 from '../images/Vector 1.svg'
+import svg2 from '../images/Vector 2.svg'
+import svg3 from '../images/Vector 3.svg'
 
 function Login() {
 
-    const [username, setusername] = useState('test')
-    const [password, setpassword] = useState('test')
-    const [error, setError] = useState()
-    const [msg, setMsg] = useState()
+    const [username, setusername] = useState('')
+    const [password, setpassword] = useState('')
+    const [error, setError] = useState('')
+    const [msg, setMsg] = useState('')
 
     useEffect(() => {
         let login = localStorage.getItem('login')
@@ -33,7 +36,7 @@ function Login() {
                 setError("")
                 setMsg("You're in ! Redirecting...")
                 localStorage.setItem('login', true)
-                localStorage.setItem('loginUsername' , username)
+                localStorage.setItem('loginUsername', username)
                 setTimeout(() => {
                     window.location.href = '/main';
                 }, 1000)
@@ -49,31 +52,46 @@ function Login() {
 
     return (
         <div className='Login login_form'>
+            <div className="background">
+                <div className="round1"></div>
+                <div className="round2"></div>
+                <div className="round3"></div>
+                <div className="round4"></div>
+                <div className="round5"></div>
+                <div className="round6"></div>
+                <div className="round7"></div>
+                <div className="round8"></div>
+                <div className="round9"></div>
+                <div className="round10"></div>
+                <div className="round11"></div>
+                <div className="round12"></div>
+            </div>
             <form onSubmit={loginUser}>
+                <h1>Sign in</h1>
                 {
                     <>
-                        <p>{error}</p>
-                        <p>{msg}</p>
+                        <p style={error !== '' ? { display: 'block' } : { display: 'none' }}>{error}</p>
+                        <p style={msg !== '' ? { display: 'block' } : { display: 'none' }}>{msg}</p>
                     </>
                 }
-                <label className='form__input'>username
+                <label className='form__input'>
                     <input
                         type="text"
                         name='username'
-                        placeholder='username'
+                        placeholder='Username'
                         value={username}
                         onChange={e => setusername(e.target.value)} />
-                </label>
-                <label className='form__input'>password
                     <input
                         type="password"
                         name='password'
-                        placeholder='password'
+                        placeholder='Password'
                         value={password}
                         onChange={e => setpassword(e.target.value)} />
                 </label>
-                <input className='form__button' type="submit" value='Sign In' />
-                <a className='form__href' href="/login/registration">Register now</a>
+                <div className="bottom">
+                    <a className='form__href' href="/login/registration">Register now</a>
+                    <input className='form__button' type="submit" value='Submit' />
+                </div>
             </form>
         </div>
     )
