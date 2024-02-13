@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import svg1 from '../images/Vector 1.svg'
-import svg2 from '../images/Vector 2.svg'
-import svg3 from '../images/Vector 3.svg'
 
 function Login() {
 
@@ -62,9 +59,6 @@ function Login() {
                 <div className="round7"></div>
                 <div className="round8"></div>
                 <div className="round9"></div>
-                <div className="round10"></div>
-                <div className="round11"></div>
-                <div className="round12"></div>
             </div>
             <form onSubmit={loginUser}>
                 <h1>Sign in</h1>

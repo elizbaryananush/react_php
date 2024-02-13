@@ -60,6 +60,15 @@ li {
             background-color: #D374FF;
         }
 
+        .round7 {
+            background-color: #BCBBFF;
+        }
+
+        .round8,
+        .round9 {
+            background-color: #2200ffb0;
+        }
+
         .round1 {
             width: 287px;
             height: 192px;
@@ -87,51 +96,53 @@ li {
         .round4 {
             width: 325px;
             height: 238px;
-            top: 50px;
+            top: -50px;
             right: 0px;
             rotate: 45deg;
             filter: blur(100px);
+            z-index: 2;
         }
 
-        .round5{
+        .round5 {
             width: 386px;
             height: 440px;
             right: 250px;
             top: -100px;
             filter: blur(100px);
+            z-index: 2;
         }
 
-        // .round1 {
-        //     height: 110vh;
-        //     fill: rgb(0, 0, 129);
-        //     position: absolute;
-        //     right: -100px;
-        //     top: -10vh;
-        //     filter: blur(120px);
+        .round6 {
+            width: 371px;
+            height: 499px;
+            left: 50px;
+            bottom: 100px;
+            filter: blur(100px);
+        }
 
-        //     path {
-        //         height: 100%;
-        //     }
-        // }
+        .round7 {
+            width: 408px;
+            height: 364px;
+            top: 150px;
+            right: -20px;
+            filter: blur(100px);
+        }
 
-        // .round2 {
-        //     position: absolute;
-        //     fill: rgb(0, 0, 129);
-        //     bottom: 0;
-        //     width: 1200px;
-        //     left: 400px;
-        //     bottom: -100px;
-        //     filter: blur(120px);
-        // }
+        .round8 {
+            width: 430px;
+            height: 378px;
+            bottom: 100px;
+            right: -250px;
+            filter: blur(100px);
+        }
 
-        // .round3 {
-        //     fill: rgb(0, 0, 129);
-        //     width: 1100px;
-        //     position: absolute;
-        //     top: -100px;
-        //     left: -100px;
-        //     filter: blur(120px);
-        // }
+        .round9 {
+            width: 530px;
+            height: 478px;
+            top: 0px;
+            left: -250px;
+            filter: blur(100px);
+        }
     }
 
 
@@ -141,7 +152,6 @@ li {
         height: fit-content;
         display: flex;
         flex-direction: column;
-        // justify-content: space-around;
         align-items: center;
         gap: 50px;
         border-radius: 30px;
@@ -149,9 +159,10 @@ li {
         padding: 3rem 3rem;
         margin: 50vh 50vw;
         transform: translateY(-50%) translateX(-50%);
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.534);
         backdrop-filter: blur(10px);
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        // border: 1px black solid;
 
         h1 {
             font-size: 45px;
@@ -222,7 +233,7 @@ li {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 3 !important;
 
     .cross {
         position: absolute;
@@ -441,81 +452,93 @@ li {
     }
 }
 
-.Home {
-    .SideBar {
-        width: 16vw;
-        height: 100vh;
-        position: fixed;
-        border-right: 1px rgba(128, 128, 128, 0.4) solid;
+.SideBar {
+    width: 16vw;
+    height: 100vh;
+    position: fixed;
+    border-right: 1px rgba(128, 128, 128, 0.4) solid;
 
-        .top {
-            height: 20vh;
+    .top {
+        height: 20vh;
+        display: flex;
+        align-items: center;
+
+        h1 {
+            width: fit-content;
+            margin: auto;
+            text-transform: uppercase;
+            font-size: 36px;
+        }
+    }
+
+    .middle {
+        height: 65vh;
+        display: flex;
+        flex-direction: column;
+        padding: 4rem 0;
+
+        .active {
+            font-weight: 800;
+        }
+
+        li {
+            padding: 1rem 2rem;
             display: flex;
             align-items: center;
+            gap: 1rem;
 
-            h1 {
-                width: fit-content;
-                margin: auto;
-                text-transform: uppercase;
-                font-size: 36px;
+            a {
+                color: black;
+                text-transform: capitalize;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            svg {
+                width: 32px;
+                height: 32px;
             }
         }
+    }
 
-        .middle {
-            height: 65vh;
-            display: flex;
-            flex-direction: column;
-            padding: 4rem 0;
+    .bottom {
+        height: 15vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            li {
-                padding: 1rem 2rem;
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-
-                a {
-                    color: black;
-                    text-transform: capitalize;
-                    font-size: 18px;
-                    font-weight: 600;
-                }
-
-                svg {
-                    width: 32px;
-                    height: 32px;
-                }
-            }
-        }
-
-        .bottom {
-            height: 15vh;
+        button {
+            height: 40px;
+            width: 120px;
+            background-color: transparent;
+            border: 2px black solid;
+            border-radius: 15px;
+            text-transform: capitalize;
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
 
-            button {
-                height: 40px;
-                width: 120px;
-                background-color: transparent;
-                border: 2px black solid;
-                border-radius: 15px;
-                text-transform: capitalize;
-                font-size: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: 600;
-                cursor: pointer;
+            &:hover {
+                background-color: black;
+                color: white;
+            }
 
-                &:hover {
-                    background-color: black;
-                    color: white;
-                }
-
-                &:active {
-                    transform: scale(0.96);
-                }
+            &:active {
+                transform: scale(0.96);
             }
         }
+    }
+}
+
+.Profile{
+    .rightPart{
+        width: 84vw;
+        position: absolute;
+        right: 0px !important;
+        height: 100vh;
+        z-index: -1 !important;
     }
 }

@@ -15,6 +15,7 @@ try {
     $newPassword = $requestData['password'];
     $newFullname = $requestData['fullname'];
     $newDate = date("Y-m-d H:i:s");
+    $defaultProfilePicture = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg';
 
     $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
@@ -34,7 +35,7 @@ try {
 
     if (empty($users)) {
 
-        $sql2 = "INSERT INTO users (username, fullname, password , date) VALUES ('$newUsername', '$newFullname', '$hashedPassword' , '$newDate')";
+        $sql2 = "INSERT INTO users (username, fullname, password , date , pfp_url) VALUES ('$newUsername', '$newFullname', '$hashedPassword' , '$newDate' ,'$defaultProfilePicture')";
         $result = mysqli_query($connection, $sql2);
 
         $massage = null;

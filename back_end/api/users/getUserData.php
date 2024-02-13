@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Max-Age: 86400'); // 24 hours
@@ -9,14 +9,18 @@ header('Access-Control-Max-Age: 86400'); // 24 hours
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$database = "testing_phpmyadmin";
+$database = "social_media";
+
+$requestData = json_decode(file_get_contents('php://input'), true);
+
+$newUsername = $requestData['username'];
 
 try {
-    $connection = mysqli_connect("localhost", "root", "", "testing_phpmyadmin", 9306);
+    $connection = mysqli_connect($hostname, $username, $password, $database, 9306);
 
     $sql = "SELECT * 
-            FROM users
-            ";
+            FROM users 
+            WHERE username = '$newUsername'";
 
     $result = mysqli_query($connection, $sql);
 
@@ -26,9 +30,10 @@ try {
         while ($row = mysqli_fetch_assoc($result)) {
             $results[] = $row;
         }
-
         echo json_encode($results);
+    } else {
+        echo json_encode('hello');
     }
 } catch (Exception $e) {
-    echo 'Caught exception: ', $e->getMessage();
+    echo json_encode('Caught exception: ', $e->getMessage());
 }
