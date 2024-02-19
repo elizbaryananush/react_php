@@ -11,7 +11,7 @@ Make sure you have the following installed on your machine:
 
 Clone the repository to your local machine:
 
-git clone https://github.com/your-username/your-repo.git
+git clone [https://github.com/your-username/your-repo.git](https://github.com/elizbaryananush/react_php.git)
 
 # Frontend Setup
 Change directory to the frontend folder , Install dependencies and run the development server
