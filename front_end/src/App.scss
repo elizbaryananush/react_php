@@ -533,12 +533,72 @@ li {
     }
 }
 
-.Profile{
-    .rightPart{
+.Profile {
+    .rightPart {
         width: 84vw;
         position: absolute;
         right: 0px !important;
         height: 100vh;
         z-index: -1 !important;
+
+        .top {
+            width: 60vw;
+            margin: 0 auto;
+            // background-color: gray;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+
+            .side {
+                height: 230px;
+                padding: 1.5rem;
+            }
+
+            img {
+                width: 230px;
+                height: 230px;
+                border-radius: 100%;
+                // margin-top: 25vh;
+                // transform: translateY(-50%);
+            }
+        }
+
+        .bottom {
+            width: 100%;
+            border-top: 1px rgba(0, 0, 0, 0.279) solid;
+
+            .top {
+                height: 50px;
+
+                ul {
+                    display: flex;
+                    align-items: center;
+                    gap: 35px;
+                    width: fit-content;
+                    margin: 0 auto;
+
+                    .active{
+                        border-top: 1px black solid;
+                    }
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        height: 50px;
+                        cursor: pointer;
+
+                        p{
+                            font-size: 18px;
+                        }
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
